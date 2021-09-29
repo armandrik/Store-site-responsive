@@ -1,0 +1,147 @@
+$primery-color: #6d28d9;
+$secondray-color: #ede9fe;
+$white: #fff;
+$black: #242424;
+$gray: #5f5f5f;
+$red: #db2745;
+$body-color: #f3f3f3;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $body-color;
+}
+
+nav {
+    background-color: $secondray-color;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .menu-container {
+        font-size: 1.4rem;
+        cursor: pointer;
+        i {
+            color: $primery-color;
+        }
+    }
+    h2 {
+        font-size: 19px;
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 2px;
+        word-spacing: 5px;
+        color: $gray;
+    }
+    .cart-container {
+        display: flex;
+        font-size: 1.4rem;
+        cursor: pointer;
+        position: relative;
+        i {
+            color: $primery-color;
+        }
+        span {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: $red;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            font-family: serif;
+            font-size: 1rem;
+        }
+    }
+}
+
+// end of header
+.title {
+    margin: 2.5rem 0;
+    h1 {
+        display: flex;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: $gray;
+        font-size: 2.5rem;
+    }
+}
+
+//end of title
+.main-container {
+    margin-bottom: 2rem;
+    main {
+        max-width: 1170px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-column-gap: 3rem;
+        grid-row-gap: 3rem;
+        margin: auto;
+        padding: 0 2rem;
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: $white;
+            border-radius: 8px 8px 8px 8px;
+            .img-container {
+                img {
+                    width: 100%;
+                    min-width: 120px;
+                    border-radius: 8px 8px 0 0;
+                }
+            }
+            .product-desc {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                margin: 1rem 0;
+                p {
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 18px;
+                    color: $gray;
+                    &:nth-child(2) {
+                        color: $primery-color;
+                    }
+                }
+            }
+            .btn-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin: 1.2rem 0;
+                button {
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    background-color: $primery-color;
+                    color: $secondray-color;
+                    width: 42%;
+                    min-width: 120px;
+                    height: 7vh;
+                    cursor: pointer;
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    font-size: 17px;
+                    transition: .5s;
+                    &:hover {
+                        border: 1px solid $primery-color;
+                        background-color: transparent;
+                        color: $primery-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//end of main
+::selection {
+    background-color: $primery-color;
+}
