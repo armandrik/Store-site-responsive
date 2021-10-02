@@ -13,6 +13,7 @@ $body-color: #f3f3f3;
 
 body {
     background-color: $body-color;
+    transition: .5s;
 }
 
 nav {
@@ -21,13 +22,57 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    //humburger menue
     .menu-container {
-        font-size: 1.4rem;
+        width: 40px;
+        height: 35px;
         cursor: pointer;
-        i {
-            color: $primery-color;
+        transition: all .5s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        &:hover {
+            background-color: $black;
+        }
+        .humber-menu {
+            width: 30px;
+            height: 5px;
+            background-color: $primery-color;
+            border-radius: 10px;
+            transition: all .5s ease-in-out;
+            &::before,
+            &::after {
+                position: absolute;
+                content: "";
+                width: 30px;
+                height: 5px;
+                border-radius: 10px;
+                background-color: $primery-color;
+                transition: all .5s ease-in-out;
+            }
+            &::before {
+                transform: translateY(-9px);
+            }
+            &::after {
+                transform: translateY(9px);
+            }
         }
     }
+    //animation burguer
+    .menu-container.open .humber-menu {
+        transform: translateX(-50px);
+        background-color: transparent;
+    }
+    .menu-container.open .humber-menu::before {
+        transform: rotate(45deg) translate(35px, -35px);
+        background-color: $secondray-color;
+    }
+    .menu-container.open .humber-menu::after {
+        transform: rotate(-45deg) translate(35px, 35px);
+        background-color: $secondray-color;
+    }
+    //navbar title
     h2 {
         font-size: 19px;
         font-family: Arial, Helvetica, sans-serif;
@@ -35,6 +80,7 @@ nav {
         word-spacing: 5px;
         color: $gray;
     }
+    // cart icon
     .cart-container {
         display: flex;
         font-size: 1.4rem;
@@ -62,6 +108,131 @@ nav {
 }
 
 // end of header
+.humburger-container {
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(108, 40, 217, 0.753);
+    overflow-y: hidden;
+    transition: 0.5s;
+    .humburger {
+        margin-top: 60px;
+        height: 44vh;
+        // display: grid;
+        // grid-template-rows: 100px 100px 100px 100px;
+        h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $secondray-color;
+            font-size: 1.2rem;
+            font-family: Arial, Helvetica, sans-serif;
+            border-bottom: 2px solid $secondray-color;
+            cursor: pointer;
+            background-color: $primery-color;
+            height: 11vh;
+            transition: .5s;
+            &:hover {
+                background-color: $red;
+            }
+        }
+        .darkMood-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-bottom: 2px solid $secondray-color;
+            background-color: $primery-color;
+            padding: 10px 0;
+            transition: .5s;
+            &:hover {
+                background-color: $red;
+            }
+            h1 {
+                color: $secondray-color;
+                font-size: 1.2rem;
+                font-family: Arial, Helvetica, sans-serif;
+                cursor: pointer;
+                margin-bottom: 5px;
+            }
+            .toggle-container {
+                width: 100%;
+                text-align: center;
+                input {
+                    display: none;
+                }
+                .checkbox-label {
+                    width: 72px;
+                    height: 25px;
+                    transition: .3s ease;
+                    display: inline-block;
+                    border-radius: 15px;
+                    position: relative;
+                    cursor: pointer;
+                    &::after {
+                        content: '';
+                        width: 25px;
+                        height: 25px;
+                        left: 0;
+                        border-radius: 100%;
+                        position: absolute;
+                        transition: .3s ease;
+                    }
+                }
+                .label-1 {
+                    background-color: $black;
+                    &::after {
+                        background-color: $secondray-color;
+                    }
+                }
+                .input-1:checked+.label-1 {
+                    background-color: $white;
+                }
+                .input-1:checked+.label-1::after {
+                    background-color: $black;
+                    transform: translateX(50px);
+                }
+            }
+        }
+    }
+    .icons-wrraper {
+        position: absolute;
+        width: 100%;
+        bottom: 5px;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-bottom: 2px solid $secondray-color;
+        border-top: 2px solid $secondray-color;
+        background-color: $black;
+        transition: .5s;
+        h2 {
+            color: $white;
+            font-size: 1.3rem;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 5px;
+        }
+        a {
+            font-size: 1.7rem;
+            i {
+                padding: 5px;
+                color: $white;
+                transition: .5s;
+                &:hover {
+                    color: $primery-color;
+                }
+            }
+        }
+    }
+}
+
+//end of humburger mnue
 .title {
     margin: 2.5rem 0;
     h1 {
@@ -69,7 +240,7 @@ nav {
         justify-content: center;
         font-family: Arial, Helvetica, sans-serif;
         color: $gray;
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 }
 
@@ -91,6 +262,7 @@ nav {
             align-items: center;
             background-color: $white;
             border-radius: 8px 8px 8px 8px;
+            // product images
             .img-container {
                 img {
                     width: 100%;
@@ -98,6 +270,7 @@ nav {
                     border-radius: 8px 8px 0 0;
                 }
             }
+            // description of products
             .product-desc {
                 width: 100%;
                 display: flex;
@@ -112,6 +285,7 @@ nav {
                     }
                 }
             }
+            // add to cart button
             .btn-container {
                 width: 100%;
                 display: flex;
@@ -126,6 +300,8 @@ nav {
                     width: 42%;
                     min-width: 120px;
                     height: 7vh;
+                    min-height: 35px;
+                    max-height: 40px;
                     cursor: pointer;
                     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                     font-size: 17px;
@@ -144,4 +320,5 @@ nav {
 //end of main
 ::selection {
     background-color: $primery-color;
+    opacity: .5;
 }
